@@ -1,12 +1,9 @@
 //
-// Created by pool_little on 29/10/2016.
+// Created by pool_little on 30/10/2016.
 //
 
-#ifndef PRO_HANSU_STUDENT_H
-#define PRO_HANSU_STUDENT_H
-
-#endif //PRO_HANSU_STUDENT_H
-
+#ifndef ALGORITHM_CPP_STUDENT_H
+#define ALGORITHM_CPP_STUDENT_H
 #include <iostream>
 #include <string>
 
@@ -31,3 +28,5 @@ struct Student{
     }
 
 };
+
+#endif //ALGORITHM_CPP_STUDENT_H

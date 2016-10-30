@@ -1,10 +1,9 @@
 //
-// Created by pool_little on 29/10/2016.
+// Created by pool_little on 30/10/2016.
 //
 
-#ifndef PRO_HANSU_SORTTESTHELPER_H
-#define PRO_HANSU_SORTTESTHELPER_H
-
+#ifndef ALGORITHM_CPP_SORTTESTHELPER_H
+#define ALGORITHM_CPP_SORTTESTHELPER_H
 #include <iostream>
 #include <cassert>
 #include <ctime>
@@ -53,6 +52,4 @@ namespace SortTestHelper{
     }
 }
 
-
-
-#endif //PRO_HANSU_SORTTESTHELPER_H
+#endif //ALGORITHM_CPP_SORTTESTHELPER_H
