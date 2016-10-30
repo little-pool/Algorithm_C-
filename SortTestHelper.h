@@ -20,6 +20,22 @@ namespace SortTestHelper{
         return arr;
     }
 
+    //生成近乎有序的数组来测量插入排序的性能
+    //先生成一个完全有序的数组，然后再随机调换若干对元素
+    int* generateNearlyOrderedArray(int n, int swapTimes){
+        int* arr = new int[n];
+        for(int i = 0 ; i < n ; i ++){
+            arr[i] = i;
+        }
+        srand(time(NULL));
+        for(int i = 0 ; i < swapTimes ; i ++){
+            int posx = rand()%n;
+            int posy = rand()%n;
+            swap(arr[posx],arr[posy]);
+        }
+        return arr;
+    }
+
     template <typename T>
     void printArray(T arr[], int n){
         for(int i = 0 ; i < n ; i ++ ){
@@ -40,6 +56,7 @@ namespace SortTestHelper{
         return true;
     }
 
+    //测试性能
     template <typename T>
     void testSort(string sortName, void(*sort)(T[],int),T arr[], int n ){
         //时钟周期，1个时钟周期很短<1s
@@ -50,6 +67,15 @@ namespace SortTestHelper{
         cout<<sortName<<":"<<double (endTime-startTime)/CLOCKS_PER_SEC<<"s"<<endl;
         return;
     }
+
+    //复制随机数组
+    int* copyIntArray(int a[],int n){
+        int* arr = new int[n];
+        //std中的copy可迭代对象的函数
+        copy(a, a+n, arr);
+        return arr;
+    }
+
 }
 
 #endif //ALGORITHM_CPP_SORTTESTHELPER_H
