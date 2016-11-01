@@ -53,6 +53,60 @@ void InsertionSort_new(T arr[],int n){
     }
 }
 
+/*
+ * 归并排序
+ */
+//递归使用归并排序，对arr[l...r]的范围进行排序
+template <typename T>
+void __merge(T arr[],int l,int mid,int r){
+    T aux[r-l+1];
+    for(int i = l ; i <= r ; i ++){
+        aux[i-l] = arr[i];
+    }
+    int i = l;
+    int j = mid + 1;
+    for (int k = l ; k <= r ; k ++){
+        if(i>mid){
+            arr[k] = aux[j-l];
+            j++;
+        }
+        else if(j>r){
+            arr[k] = aux[i-l];
+            i++;
+
+        }
+        else if(aux[i-l] < aux[j-l]){
+            arr[k] = aux[i-l];
+            i++;
+        }
+        else{
+            arr[k] = aux[j-l];
+            j++;
+        }
+    }
+}
+
+template <typename T>
+void __mergeSort(T arr[],int l, int r){
+    if(l >= r){
+        return;
+    }
+    else{
+        int mid = (l+r)/2;
+        __mergeSort(arr,l,mid);
+        __mergeSort(arr,mid+1,r);
+        __merge(arr,l,mid,r);
+    }
+}
+
+template <typename T>
+void mergeSort(T arr[], int n){
+    __mergeSort(arr, 0, n-1);
+}
+
+
+
+
 //void swap1(int a, int b){
 //    int temp = a;
 //    a = b;
@@ -87,18 +141,22 @@ int main() {
 
     //利用helper生成随机测试数组
     int n = 100000;
-    int *arr = SortTestHelper::generateNearlyOrderedArray(n,1000);
+    int *arr = SortTestHelper::generateRandomArray(n,0,n);
 //    SortTestHelper::printArray(arr,n);
     int *arr2 = SortTestHelper::copyIntArray(arr,n);
 //    SortTestHelper::printArray(arr2,n);
     int *arr3 = SortTestHelper::copyIntArray(arr,n);
 //    SortTestHelper::printArray(arr3,n);
+    int *arr4 = SortTestHelper::copyIntArray(arr,n);
 
     SortTestHelper::testSort("SelectionSort",SelectionSort,arr,n);
     SortTestHelper::testSort("InsertionSort",InsertionSort,arr2,n);
     SortTestHelper::testSort("InsertionSort_new",InsertionSort_new,arr3,n);
+    SortTestHelper::testSort("mergeSort",mergeSort,arr4,n);
     delete[] arr;
     delete[] arr2;
+    delete[] arr3;
+    delete[] arr4;
 
 //
 //    Student d[3] = {{"A",90},{"B",80},{"C",70}};
