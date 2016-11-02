@@ -142,13 +142,9 @@ int main() {
     //利用helper生成随机测试数组
     int n = 100000;
     int *arr = SortTestHelper::generateRandomArray(n,0,n);
-//    SortTestHelper::printArray(arr,n);
     int *arr2 = SortTestHelper::copyIntArray(arr,n);
-//    SortTestHelper::printArray(arr2,n);
     int *arr3 = SortTestHelper::copyIntArray(arr,n);
-//    SortTestHelper::printArray(arr3,n);
     int *arr4 = SortTestHelper::copyIntArray(arr,n);
-
     SortTestHelper::testSort("SelectionSort",SelectionSort,arr,n);
     SortTestHelper::testSort("InsertionSort",InsertionSort,arr2,n);
     SortTestHelper::testSort("InsertionSort_new",InsertionSort_new,arr3,n);
@@ -157,13 +153,5 @@ int main() {
     delete[] arr2;
     delete[] arr3;
     delete[] arr4;
-
-//
-//    Student d[3] = {{"A",90},{"B",80},{"C",70}};
-//    SelectionSort( d , 3 );
-//    for(int i = 0 ; i < 3 ; i ++){
-//        cout<<d[i];
-//    }
-//    cout<<'\n';
     return 0;
 }
