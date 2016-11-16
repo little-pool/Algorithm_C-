@@ -4,7 +4,8 @@
 
 #ifndef ALGORITHM_CPP_SORT_H
 #define ALGORITHM_CPP_SORT_H
-/*
+#include "Heap.h"
+/**
  * 选择排序
  * 1.寻找[i,n)之间最小的数值
  * 2.与第i为数据交换位置
@@ -22,7 +23,7 @@ void SelectionSort(T arr[],int n){
     }
 }
 
-/*
+/**
  * 插入排序
  * 1.判断i?<i-1
  * 2.如果i<i-1 then swap(i,i-1)
@@ -38,7 +39,7 @@ void InsertionSort(T arr[],int n){
     }
 }
 
-/*
+/**
  * 插入排序的优化
  * 为了减少插入排序中的交换过程的次数，我们用多次赋值来取代交换
  */
@@ -54,7 +55,7 @@ void InsertionSort_new(T arr[],int n){
     }
 }
 
-/*
+/**
  * 归并排序(自顶向下)
  */
 //递归使用归并排序，对arr[l...r]的范围进行排序
@@ -105,7 +106,7 @@ void mergeSort(T arr[], int n){
     __mergeSort(arr, 0, n-1);
 }
 
-/*
+/**
  * 归并排序(自底向上)
  * 这种方法并不需要递归，只需要迭代。
  */
@@ -126,7 +127,6 @@ void mergeSortBU(T arr[], int n){
 /**
  * 快速排序(基本)
  * 这种方法的缺点为当数组的相同元素很多时，分治出的二叉树平衡性就会很差，最坏的情况为单边，导致算法的时间复杂度为O(n^2)
- * @return
  */
 template <typename T>
 int __partition(T arr[], int l, int r){
@@ -160,5 +160,23 @@ void __quickSort(T arr[], int l, int r){
 template <typename T>
 void quickSort(T arr[], int n){
     __quickSort(arr, 0, n-1);
+}
+
+
+/**
+ * 堆排序
+ */
+template <typename T>
+void heapSort(T arr[], int n){
+    //根据n创建一个刚好够存放待排序数据的最大堆。
+    MaxHeap<T> maxheal = MaxHeap<T>(n+1);
+    //将传入数组的数据存入该最大堆。
+    for(int i = 0 ; i < n ; i ++){
+        maxheal.insert(arr[i]);
+    }
+    //逐一弹出堆中的根，反向刷新原数组。
+    for(int j = n-1 ; j >= 0 ; j --){
+        arr[j] = maxheal.extractMax();
+    }
 }
 #endif //ALGORITHM_CPP_SORT_H

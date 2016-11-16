@@ -40,11 +40,27 @@ private:
         }
     }
 public:
+    //基本构造函数，构造空的最大堆
     MaxHeap(int capacity){
         data = new Item[capacity+1];
         count = 0;
         this->capacity = capacity;
     }
+
+    //重写构造函数用一个数组直接构造出一个堆，然后调整成最大堆
+    MaxHeap(Item arr, int n){
+        //step1：将传入的arr赋值给data
+        data = new Item[n+1];
+        for(int i = 0 ; i < n ; i ++){
+            data[i+1] = arr[i];
+        }
+        this->count = n;
+        //step2：从第一个非叶子节点开始shiftDown，直到第1个元素后，最大堆调整完成
+        for(int i = n/2 ; i > 0 ; i--){
+            shiftDown(i);
+        }
+    }
+
     ~MaxHeap(){
         delete [] data;
     }
