@@ -7,6 +7,7 @@
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SortTestHelper.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Heap.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/binarySearch.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
@@ -117,6 +118,7 @@
           <root url="file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/SpriteKit.framework/Headers" />
           <root url="file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/Automator.framework/Headers" />
           <root url="file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/GameKit.framework/Headers" />
+          <root url="file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/MediaPlayer.framework/Headers" />
           <root url="file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/SecurityInterface.framework/Headers" />
           <root url="file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/CoreText.framework/Headers" />
           <root url="file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/NetworkExtension.framework/Headers" />
@@ -289,6 +291,7 @@
           <root url="file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/SpriteKit.framework/Headers" />
           <root url="file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/Automator.framework/Headers" />
           <root url="file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/GameKit.framework/Headers" />
+          <root url="file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/MediaPlayer.framework/Headers" />
           <root url="file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/SecurityInterface.framework/Headers" />
           <root url="file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/CoreText.framework/Headers" />
           <root url="file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/NetworkExtension.framework/Headers" />
