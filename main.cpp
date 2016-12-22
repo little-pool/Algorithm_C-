@@ -5,6 +5,7 @@
 #include "Heap.h"
 #include "binarySearch.h"
 #include <queue>
+#include "Union.h"
 using namespace std;
 using namespace binaryMethod;
 
@@ -21,11 +22,11 @@ int main() {
 //    cout<<bst.contain(10)<<endl;
 //    cout<<*bst.search(2)<<endl;
 
-    /**
-     * 利用字符串作为key，该字符出现的次数作为value，将这样的KV对存储在二叉搜索树中
-     * 然后来对字符串做动态维护操作，例如插入后查询某一个字符串出现的次数，时间复杂度为logn级别
-     */
-    int n = 10;
+//    /**
+//     * 利用字符串作为key，该字符出现的次数作为value，将这样的KV对存储在二叉搜索树中
+//     * 然后来对字符串做动态维护操作，例如插入后查询某一个字符串出现的次数，时间复杂度为logn级别
+//     */
+//    int n = 10;
 //    int* arr1 = SortTestHelper::generateRandomArray(n,0,n);
 //    SortTestHelper::printArray(arr1,n);
 //    BST<int , int> bst_rate = BST<int , int>();
@@ -40,19 +41,28 @@ int main() {
 //    cout<<"1出现的次数:"<<*bst_rate.search(1)<<endl;
 
 
-    int* arr2 = SortTestHelper::generateNearlyOrderedArray(n,5);
-    cout<<"原数组:";
-    SortTestHelper::printArray(arr2,n);
-    BST<int, string> bst_Order = BST<int, string>();
-    for(int i = 0 ; i < n ; i ++){
-        bst_Order.insert(arr2[i],"none");
-    }
-    cout<<"前序遍历:";
-    bst_Order.perOrder();
-    cout<<"中序遍历:";
-    bst_Order.inOrder();
-    cout<<"后序遍历:";
-    bst_Order.postOrder();
-    cout<<"层序遍历:";
-    bst_Order.levelOrder();
+//    int* arr2 = SortTestHelper::generateNearlyOrderedArray(n,5);
+//    cout<<"原数组:";
+//    SortTestHelper::printArray(arr2,n);
+//    BST<int, string> bst_Order = BST<int, string>();
+//    for(int i = 0 ; i < n ; i ++){
+//        bst_Order.insert(arr2[i],"none");
+//    }
+//    cout<<"前序遍历:";
+//    bst_Order.perOrder();
+//    cout<<"中序遍历:";
+//    bst_Order.inOrder();
+//    cout<<"后序遍历:";
+//    bst_Order.postOrder();
+//    cout<<"层序遍历:";
+//    bst_Order.levelOrder();
+
+    UniFind_02::UnionFind test01 = UniFind_02::UnionFind(10);
+    cout<<test01.findRoot(3)<<endl;
+    cout<<test01.findRoot(6)<<endl;
+    test01.unionElements(3,6);
+    cout<<test01.findRoot(3)<<endl;
+    cout<<test01.findRoot(6)<<endl;
+    cout<<test01.isConnected(3,6)<<endl;
+
 }

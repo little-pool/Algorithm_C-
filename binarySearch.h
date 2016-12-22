@@ -232,7 +232,7 @@ namespace binaryMethod{
         }
         Key maximum(){
             assert(count != 0);
-            Node* maxNode = maximum(rort);
+            Node* maxNode = maximum(root);
             return maxNode->key;
         }
     };
