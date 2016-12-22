@@ -48,7 +48,7 @@ namespace UnionFind_01{
 
 }
 
-namespace UniFind_02{
+namespace UnionFind_02{
     /**
      * 利用数组的值代表父节点的指针，将原有的线性结构转变为树形结构，在合并时只需修改指针的指向即可，效率<On1。
      */
@@ -66,16 +66,6 @@ namespace UniFind_02{
         }
 
         int findRoot(int n){
-//first
-//            if(parent[n] == n)
-//                return n;
-//            else
-//                findRoot(parent[n]);
-//second
-//            while(n != parent[n])
-//                n = parent[n];
-//            return n;
-//third
             if(parent[n] != n)
                 return findRoot(parent[n]);
             return parent[n];
@@ -93,6 +83,57 @@ namespace UniFind_02{
             parent[pRoot] = qRoot;
         }
 
+    };
+}
+
+namespace UnionFind_03{
+    /**
+     * 基于rank的Union优化，即在Union时先判断哪一颗树的rank(层数)少，然后将小数Union到大树上。
+     */
+    class UnionFind{
+    private:
+        int* parent;
+        int* rank;
+        int count;
+    public:
+        UnionFind(int n){
+            this->count = n;
+            this->parent = new int[count];
+            this->rank = new int[count];
+            for(int i = 0 ; i < count ; i ++){
+                parent[i] = i;
+                rank[i] = 1;
+            }
+        }
+        ~UnionFind(){
+            delete[] parent;
+            delete[] rank;
+        }
+        int findRoot(int n){
+            if(parent[n] != n)
+                return findRoot(parent[n]);
+            return parent[n];
+        }
+
+        int findSize(int n){
+            return rank[n];
+        }
+        bool isConnected(int p, int q){
+            return findRoot(p) == findRoot(q);
+        }
+        void unionElements(int p, int q){
+            if(isConnected(p, q))
+                return;
+            int pRoot = findRoot(p);
+            int qRoot = findRoot(q);
+            if(rank[pRoot] < rank[qRoot])
+                parent[pRoot] = qRoot;
+            else if(rank[pRoot] > rank[qRoot])
+                parent[qRoot] = pRoot;
+            else//rank is equal between pRoot and qRoot
+                parent[pRoot] = qRoot;
+                rank[qRoot] += 1;
+        }
     };
 }
 #endif //ALGORITHM_CPP_UNION_H
