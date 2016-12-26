@@ -6,6 +6,7 @@
 #include "binarySearch.h"
 #include <queue>
 #include "Union.h"
+#include "Graph.h"
 using namespace std;
 using namespace binaryMethod;
 
@@ -57,19 +58,37 @@ int main() {
 //    cout<<"层序遍历:";
 //    bst_Order.levelOrder();
 
-    UnionFind_03::UnionFind test01 = UnionFind_03::UnionFind(10);
-    cout<<"###"<<endl;
-    cout<<test01.findRoot(3)<<endl;
-    cout<<test01.findRoot(6)<<endl;
-    cout<<test01.findSize(3)<<endl<<test01.findSize(6)<<endl;
-    cout<<"###"<<endl;
-    test01.unionElements(3,6);
-    cout<<test01.findRoot(3)<<endl;
-    cout<<test01.findRoot(6)<<endl;
-    cout<<test01.findSize(3)<<endl<<test01.findSize(6)<<endl;
-    cout<<"###"<<endl;
-    cout<<test01.isConnected(3,6)<<endl;
-    cout<<"###"<<endl;
+//    UnionFind_03::UnionFind test01 = UnionFind_03::UnionFind(10);
+//    cout<<"###"<<endl;
+//    cout<<test01.findRoot(3)<<endl;
+//    cout<<test01.findRoot(6)<<endl;
+//    cout<<test01.findSize(3)<<endl<<test01.findSize(6)<<endl;
+//    cout<<"###"<<endl;
+//    test01.unionElements(3,6);
+//    cout<<test01.findRoot(3)<<endl;
+//    cout<<test01.findRoot(6)<<endl;
+//    cout<<test01.findSize(3)<<endl<<test01.findSize(6)<<endl;
+//    cout<<"###"<<endl;
+//    cout<<test01.isConnected(3,6)<<endl;
+//    cout<<"###"<<endl;
+
+    int N = 20;
+    int S = 50;
+    srand(time(NULL));
+    Sparse::SparseGraph sg_1(N, false);
+    for(int i = 0 ; i < S ; i ++){
+        sg_1.AddSide(rand()%N,rand()%N);
+    }
+
+    for(int i = 0 ; i < N ; i ++){
+        cout<<i<<": ";
+        Sparse::SparseGraph::adjIterrator adj(sg_1, i);
+        for(int j = adj.begin() ; !adj.end() ; j = adj.next()){
+            cout<<j<<" ";
+        }
+        cout<<endl;
+    }
+
 
 
 }

@@ -54,6 +54,9 @@ namespace Dense{
 }
 
 namespace Sparse{
+    /**
+     * 用邻接表来表示稀疏图
+     */
     class SparseGraph{
     private:
         int node_num;
@@ -75,13 +78,52 @@ namespace Sparse{
         int GetSideNum(){
             return side_num;
         }
-        HasSide(int m, int n){
+        bool HasSide(int m, int n){
             assert(0 <= m <= node_num);
             assert(0 <= n <= node_num);
-
+            for(int i = 0 ; i < graph[m].size() ; i ++){
+                if(graph[m][i] == n)
+                    return true;
+            }
+            return false;
         }
 
+        void AddSide(int m, int n){
+            assert(0 <= m <= node_num);
+            assert(0 <= n <= node_num);
+            if(HasSide(m, n))
+                return;
+            graph[m].push_back(n);
+            m++;
+        }
 
+        class adjIterrator{
+        private:
+            SparseGraph &sg;
+            int node;
+            int index;
+        public:
+            adjIterrator(SparseGraph &SG, int node):sg(SG){
+                this->node = node;
+                this->index = 0;
+            }
+
+            int begin(){
+                index = 0;
+                if(sg.graph[node].size())
+                    return sg.graph[node][index];
+                return -1;
+            }
+
+            int next(){
+                index ++;
+                return sg.graph[node][index];
+            }
+
+            bool end(){
+                return index >= sg.graph[node].size();
+            }
+        };
     };
 }
 #endif //ALGORITHM_CPP_GRAPH_H

@@ -7,6 +7,8 @@
 #include <iostream>
 #include <cassert>
 #include <ctime>
+//在windows下必须包含这个头文件才可以用srand
+#include <stdlib.h>
 using namespace std;
 namespace SortTestHelper{
     //n个元素的随机整形数组，每个元素的范围有L和R规范，返回数组指针

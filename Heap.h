@@ -5,7 +5,7 @@
 #ifndef ALGORITHM_CPP_HEAP_H
 #define ALGORITHM_CPP_HEAP_H
 
-#include <bootstrap.h>
+//#include <bootstrap.h>
 #include <cassert>
 #include <algorithm>
 
