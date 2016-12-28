@@ -50,6 +50,37 @@ namespace Dense{
                 graph[n][m] = true;
             side_num ++;
         }
+        class adjIterator{
+        private:
+            //待传入的图对象的引用
+            DenseGraph &dg;
+            //待迭代节点
+            int node;
+            //每个节点相对其他节点的指针索引
+            int index;
+        public:
+            //构造函数
+            adjIterator(DenseGraph &SG, int node): dg(SG){
+                this->node = node;
+                this->index = -1;
+            }
+            int begin(){
+                index = -1;
+                return next();
+            }
+
+            int next(){
+                for(index += 1 ; index < dg.node_num ; index ++){
+                    if(dg.graph[node][index])
+                        return index;
+                }
+                return -1;
+            }
+
+            bool end(){
+                return index >= dg.node_num;
+            }
+        };
     };
 }
 
@@ -97,13 +128,13 @@ namespace Sparse{
             m++;
         }
 
-        class adjIterrator{
+        class adjIterator{
         private:
             SparseGraph &sg;
             int node;
             int index;
         public:
-            adjIterrator(SparseGraph &SG, int node):sg(SG){
+            adjIterator(SparseGraph &SG, int node):sg(SG){
                 this->node = node;
                 this->index = 0;
             }

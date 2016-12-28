@@ -82,7 +82,21 @@ int main() {
 
     for(int i = 0 ; i < N ; i ++){
         cout<<i<<": ";
-        Sparse::SparseGraph::adjIterrator adj(sg_1, i);
+        Sparse::SparseGraph::adjIterator adj(sg_1, i);
+        for(int j = adj.begin() ; !adj.end() ; j = adj.next()){
+            cout<<j<<" ";
+        }
+        cout<<endl;
+    }
+    cout<<"###############"<<endl;
+    Dense::DenseGraph sg_2(N, false);
+    for(int i = 0 ; i < S ; i ++){
+        sg_2.AddSide(rand()%N,rand()%N);
+    }
+
+    for(int i = 0 ; i < N ; i ++){
+        cout<<i<<": ";
+        Dense::DenseGraph::adjIterator adj(sg_2, i);
         for(int j = adj.begin() ; !adj.end() ; j = adj.next()){
             cout<<j<<" ";
         }
