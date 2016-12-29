@@ -50,6 +50,20 @@ namespace Dense{
                 graph[n][m] = true;
             side_num ++;
         }
+        void show(){
+            cout<<"\t";
+            for(int i = 0 ; i < this->node_num ; i ++)
+                printf("[%d]\t",i);
+            cout<<endl;
+
+            for(int i = 0 ; i < this->node_num ; i ++){
+                printf("[%d]\t ",i);
+                for(int j = 0 ; j < this->node_num ; j ++){
+                    cout<<graph[i][j]<<"\t ";
+                }
+                cout<<endl;
+            }
+        }
         class adjIterator{
         private:
             //待传入的图对象的引用
@@ -127,7 +141,15 @@ namespace Sparse{
             graph[m].push_back(n);
             m++;
         }
-
+        void show(){
+            for(int i = 0 ; i < this->node_num ; i ++){
+                printf("[%d]\t ",i);
+                for(int j = 0 ; j < graph[i].size() ; j ++){
+                    printf("%d\t ",graph[i][j]);
+                }
+                printf("\n");
+            }
+        }
         class adjIterator{
         private:
             SparseGraph &sg;

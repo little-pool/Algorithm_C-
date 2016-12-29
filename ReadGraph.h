@@ -7,7 +7,7 @@
 
 #include <cassert>
 #include <iostream>
-//#include <string>
+#include <string>
 #include <fstream>
 #include <sstream>
 using namespace std;
@@ -30,7 +30,7 @@ public:
         //为自身成员变量node_num and side_num赋值
         stringstream ss(line);
         ss>>node_num>>side_num;
-        assert(node_num = g.GetNodeNum());
+        assert(node_num == g.GetNodeNum());
         //逐行读取side信息并添加进目标图中
         for(int i = 0 ; i < side_num ; i ++){
             //继续读取一行
