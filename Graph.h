@@ -141,7 +141,7 @@ namespace Sparse{
             graph[m].push_back(n);
             if(m != n && directed == false)
                 graph[n].push_back(m);
-            m++;
+            side_num++;
         }
         void show(){
             for(int i = 0 ; i < this->node_num ; i ++){
