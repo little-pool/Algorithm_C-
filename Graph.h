@@ -139,6 +139,8 @@ namespace Sparse{
             if(HasSide(m, n))
                 return;
             graph[m].push_back(n);
+            if(m != n && directed == false)
+                graph[n].push_back(m);
             m++;
         }
         void show(){
