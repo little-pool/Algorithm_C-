@@ -80,7 +80,6 @@ public:
     void PathPrint(int w){
         if(!IfPath(w))
             cout<<"No path from "<<source_node<<" to "<<w<<endl;
-            return;
         //else
         vector<int> tmp = GetPath(w);
         for(int i = 0 ; i < tmp.size() ; i ++){

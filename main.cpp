@@ -12,6 +12,7 @@
 #include "ReadGraph.h"
 #include "Component.h"
 #include "Path.h"
+#include "ShortestPath.h"
 using namespace std;
 using namespace binaryMethod;
 
@@ -23,16 +24,20 @@ int main() {
     Dense::DenseGraph dg1(10, false);
     ReadGraph<Dense::DenseGraph> rdg1(dg1, "/Users/pool_little/GitHub/Algorithm_Cpp/GraphTest_doc");
     Component<Dense::DenseGraph> comDen1(dg1);
-    Path<Dense::DenseGraph> pathDen1(dg1, 7);
+    Path<Dense::DenseGraph> pathDen1(dg1, 0);
+    ShortestPath<Dense::DenseGraph> spathDen1(dg1, 0);
 
     dg1.show();
     cout<<"Components:"<<comDen1.GetComponentNum();
     cout<<endl;
-
     pathDen1.PathPrint(9);
+    spathDen1.PathPrint(9);
+
+    //测试from
     for(int i = 0 ; i < 10 ; i ++){
         cout<<pathDen1.GetFrom()[i]<<" ";
     }
+
     cout<<endl;
     cout<<"#########################################"<<endl;
 
