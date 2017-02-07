@@ -11,6 +11,6 @@ set(SOURCE_FILES
     Sort.h
     SortTestHelper.h
     Student.h
-    Union.h ReadGraph.h Component.h Path.h ShortestPath.h Edge.h)
+    Union.h ReadGraph.h Component.h Path.h ShortestPath.h Edge.h WeightGraph.h)
 
 add_executable(Algorithm_Cpp ${SOURCE_FILES})
