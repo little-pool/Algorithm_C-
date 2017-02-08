@@ -8,8 +8,10 @@
 #include <iostream>
 #include <vector>
 #include <cassert>
+#include <fstream>
+#include <sstream>
 using namespace std;
-
+//**********************************
 template <typename Weight>
 class Edge{
 private:
@@ -17,7 +19,7 @@ private:
      * 两节点；权重；
      */
     int x,y;
-    int weight;
+    Weight weight;
 
 public:
     /**
@@ -42,6 +44,7 @@ public:
      */
     int GetX(){return this->x;}
     int GetY(){return this->y;}
+    Weight Getweight(){return this->weight;}
 
     /**
      * 4.getOther函数
@@ -75,6 +78,7 @@ public:
     }
 };
 
+//**********************************
 template <typename Weight>
 class DenseGraph_wt{
 private:
@@ -101,6 +105,14 @@ public:
     /**
      * 2.析构函数
      */
+    ~DenseGraph_wt(){
+        for(int i = 0 ; i < nodes ; i ++){
+            for(int j = 0 ; j < nodes ; j ++){
+                if(graph[i][j])
+                    delete(graph[i][j]);
+            }
+        }
+    }
 
     /**
      * 3.Gets函数
@@ -142,7 +154,24 @@ public:
      * 6.show函数
      * 打印图的邻接矩阵
      */
-
+    void printGraph(){
+        cout<<"\t";
+        for(int i = 0 ; i < nodes ; i ++){
+            cout<<i<<"\t";
+        }
+        cout<<endl;
+        for(int i = 0 ; i < nodes ; i ++){
+            cout<<i<<"\t";
+            for(int j = 0 ; j < nodes ; j ++){
+                if(graph[i][j]) {
+                    cout << graph[i][j]->Getweight() << "\t";
+                    continue;
+                }
+                cout<<"N"<<"\t";
+            }
+            cout<<endl;
+        }
+    }
 
     /**
      * 7.adjIterator
@@ -175,13 +204,35 @@ public:
     };
 };
 
-template <typename Weight>
-class ReadGraph{
+//**********************************
+template <typename Weight, typename Graph>
+class ReadGraph_wt{
 private:
 public:
     /**
      * 构造函数
      * 传入图的引用，文件对象名，为该图添加所有的边
      */
+    ReadGraph_wt(Graph &graph, const string &filename){
+        ifstream file(filename);
+        string line;
+        int nodes, edges;
+        assert(file.is_open());
+        assert(getline(file, line));
+        stringstream ss(line);
+        ss>>nodes>>edges;
+        assert(graph.GetNodes() == nodes);
+
+        for(int i = 0 ; i < edges ; i ++){
+            assert(getline(file, line));
+            stringstream ss(line);
+            int x, y;
+            Weight wt;
+            ss>>x>>y>>wt;
+            assert(x >= 0 && x < nodes);
+            assert(y >= 0 && y < nodes);
+            graph.addEdge(x, y, wt);
+        }
+    }
 };
 #endif //ALGORITHM_CPP_WEIGHTGRAPH_H

@@ -13,6 +13,7 @@
 #include "Component.h"
 #include "Path.h"
 #include "ShortestPath.h"
+#include "WeightGraph.h"
 using namespace std;
 using namespace binaryMethod;
 
@@ -49,6 +50,11 @@ int main() {
     cout<<"Components:"<<comSpar1.GetComponentNum();
     cout<<endl;
     cout<<"#########################################"<<endl;
+
+
+    DenseGraph_wt<double > dg2(10,false);
+    ReadGraph_wt<double, DenseGraph_wt<double>> rdg2(dg2, "/Users/pool_little/GitHub/Algorithm_Cpp/GraphTest_doc_wt");
+    dg2.printGraph();
 
 
 
